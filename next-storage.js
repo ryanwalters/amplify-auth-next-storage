@@ -18,7 +18,7 @@ export default class NextStorage {
   /**
    * Constructs a new NextStorage object
    * @param {object} ctx Next.js ctx object
-   * @param {string} domain Cookies domain (mandatory).
+   * @param {string} domain Cookies domain (required).
    * @param {string} [path] Cookies path (default: '/')
    * @param {number} [expires] Cookie expiration (in days, default: 365)
    * @param {boolean} [secure] Cookie secure flag (default: true)
