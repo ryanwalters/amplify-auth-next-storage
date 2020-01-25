@@ -1,6 +1,6 @@
 {
   "name": "amplify-auth-next-storage",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Isomorphic cookie storage for Next.js apps using @aws-amplify/auth",
   "main": "next-storage.js",
   "scripts": {
