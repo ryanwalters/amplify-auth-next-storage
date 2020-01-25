@@ -1,0 +1,32 @@
+{
+  "name": "cognito-next-storage",
+  "version": "0.0.0",
+  "description": "Isomorphic cookie storage for Next.js apps using @aws-amplify/auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanwalters/cognito-next-storage.git"
+  },
+  "keywords": [
+    "aws",
+    "amplify",
+    "auth",
+    "cognito",
+    "storage",
+    "next",
+    "next.js",
+    "ssr"
+  ],
+  "author": "Ryan Walters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanwalters/cognito-next-storage/issues"
+  },
+  "homepage": "https://github.com/ryanwalters/cognito-next-storage#readme",
+  "dependencies": {
+    "nookies": "^2.0.8"
+  }
+}
