@@ -9,6 +9,8 @@
 ### Usage
 
 ```js
+// components/Component.js
+
 import Auth from '@aws-amplify/auth';
 import NextStorage from 'amplify-auth-next-storage';
 
@@ -46,3 +48,17 @@ https://aws-amplify.github.io/docs/js/authentication#manual-setup
 | expires | number | 365 | Cookie expiration in days |
 | path | string | / | Cookies path |
 | secure | boolean | true | Cookie secure flag |
+
+### Notes
+
+If you're struggling to get `Auth.configure` to work properly on the server side, one workaround is to use something like `node-fetch` as the global fetch.
+
+```js
+// _app.js
+
+import fetch from 'node-fetch';
+
+global.fetch = fetch;
+
+// ... the rest of your _app.js file
+```
