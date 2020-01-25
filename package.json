@@ -2,9 +2,13 @@
   "name": "amplify-auth-next-storage",
   "version": "1.0.0",
   "description": "Isomorphic cookie storage for Next.js apps using @aws-amplify/auth",
-  "main": "next-storage.js",
+  "main": "next-storage.cjs.js",
+  "esnext": "next-storage.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
+    "postpublish": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -28,5 +32,8 @@
   "homepage": "https://github.com/ryanwalters/cognito-next-storage#readme",
   "dependencies": {
     "nookies": "^2.0.8"
+  },
+  "devDependencies": {
+    "rollup": "^1.29.1"
   }
 }
