@@ -35,6 +35,9 @@ export function configurePool(ctx) {
 
 import React from 'react';
 import { configurePool } from 'utils/auth-utils';
+import fetch from 'node-fetch';
+
+global.fetch = fetch; // One workaround for getting Auth.configure to work properly server-side
 
 const YourApp = ({ Component, pageProps }) => {
   // Running this once at the app level, client-side, allows you to
