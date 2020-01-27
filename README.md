@@ -9,12 +9,15 @@
 ### Usage
 
 ```js
-// components/Component.js
+// utils/auth-utils.js
+
+// Placing your configuration into a reusable utility function isn't strictly
+// necessary, but makes repeated use of the configuration function easier
 
 import Auth from '@aws-amplify/auth';
 import NextStorage from 'amplify-auth-next-storage';
 
-Component.getInitialProps = async (ctx) => {
+export function configurePool(ctx) {
   Auth.configure({
     region: 'us-east-1',
     userPoolId: 'us-east-1_xxxxx',
@@ -26,9 +29,59 @@ Component.getInitialProps = async (ctx) => {
       secure: true,
     }),
   });
+}
+
+// pages/_app.js
+
+import React from 'react';
+import { configurePool } from 'utils/auth-utils';
+
+const YourApp = ({ Component, pageProps }) => {
+  // Running this once at the app level, client-side, allows you to
+  // use `Auth` methods in all of your components 
+
+  configurePool();
+
+  return <Component {...pageProps} />;
+};
+
+YourApp.getInitialProps = async appContext => {
+  const appProps = await App.getInitialProps(appContext);
+
+  // However, we need to configure the pool every time it's needed within getInitialProps
+
+  configurePool(appContext.ctx);
+
+  // ... do stuff with Auth. e.g. Auth.currentUserInfo
+
+  return { ...appProps };
+};
+
+export default YourApp;
+
+// components/FancyComponent.js
+
+import React from 'react';
+import { configurePool } from 'utils/auth-utils';
+
+const FancyComponent = () => {
+  // You can use auth here without configuring the pool since we already
+  // configured it at the YourApp level
+
+  Auth.currentUserInfo().then(currentUser => console.log(currentUser));
+
+  return <div>Fancy Component</div>;
+}
+
+FancyComponent.getInitialProps = async (ctx) => {
+  // If we need Auth in this component server-side, we need to configure the pool again
+
+  configurePool(ctx);
+
+  await Auth.currentUserInfo().then(currentUser => console.log(currentUser));
 
   return {};
-};
+}
 ```
 
 ### Options
