@@ -6,6 +6,24 @@
 
 `$ npm install amplify-auth-next-storage`
 
+### Options
+
+```js
+new NextStorage(ctx, options)
+```
+
+- `ctx` is the Next.js ctx object, only required server-side. Pass `null` or `undefined` on the client-side.
+- `options` are identical to Amplify's `cookieStorage` configuration options.
+
+https://aws-amplify.github.io/docs/js/authentication#manual-setup
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| domain **(required)** | string | *none* | Cookies domain |
+| expires | number | 365 | Cookie expiration in days |
+| path | string | / | Cookies path |
+| secure | boolean | true | Cookie secure flag |
+
 ### Usage
 
 ```js
@@ -86,24 +104,6 @@ FancyComponent.getInitialProps = async (ctx) => {
   return {};
 }
 ```
-
-### Options
-
-```js
-new NextStorage(ctx, options)
-```
-
-- `ctx` is the Next.js ctx object
-- `options` are identical to Amplify's `cookieStorage` configuration options.
-
-https://aws-amplify.github.io/docs/js/authentication#manual-setup
-
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| domain **(required)** | string | *none* | Cookies domain |
-| expires | number | 365 | Cookie expiration in days |
-| path | string | / | Cookies path |
-| secure | boolean | true | Cookie secure flag |
 
 ### Notes
 
