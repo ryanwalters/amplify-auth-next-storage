@@ -45,7 +45,7 @@ const YourApp = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
 };
 
-YourApp.getInitialProps = async appContext => {
+YourApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext);
 
   // However, we need to configure the pool every time it's needed within getInitialProps
