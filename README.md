@@ -30,7 +30,7 @@ https://aws-amplify.github.io/docs/js/authentication#manual-setup
 // utils/auth-utils.js
 
 // Placing your configuration into a reusable utility function isn't strictly
-// necessary, but makes repeated use of the configuration function easier
+// necessary, but makes repeated use of Auth.configure() easier
 
 import Auth from '@aws-amplify/auth';
 import NextStorage from 'amplify-auth-next-storage';
