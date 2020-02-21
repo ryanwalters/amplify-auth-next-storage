@@ -1,16 +1,6 @@
 import { setCookie, parseCookies, destroyCookie } from 'nookies';
 
 /**
- * "Borrowed" from https://github.com/js-cookie/js-cookie/blob/master/src/rfc6265.mjs
- * @param value
- * @returns {string}
- */
-
-function encodeCookie(value) {
-  return encodeURIComponent(value).replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
-}
-
-/**
  * @class NextStorage
  */
 
@@ -39,12 +29,12 @@ export default class NextStorage {
   /**
    * This is used to set a specific item in storage
    * @param {string} key - the key for the item
-   * @param {object} value - the value
+   * @param {string} value - the value
    * @returns {string} value that was set
    */
 
   setItem(key, value) {
-    setCookie(this.ctx, key, encodeCookie(value), {
+    setCookie(this.ctx, key, value, {
       path: this.path,
       maxAge: this.expires * 86400,
       domain: this.domain,
